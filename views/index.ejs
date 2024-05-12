@@ -1,0 +1,107 @@
+<%- include("partials/header.ejs") %>
+
+<div class="main-container">
+<% if(locals.weather) {%>
+
+    <div class="sunrise">
+        <img class="sunrise-img" src="images/sunrise.png" alt="sunrise">
+        <span><%= sunriseTime[0] %>:<%= sunriseTime[1] %></span>
+    </div>
+    
+    <div class="weather-display">
+        <div class="search">
+            <form action="/city" method="post">
+                <input type="text" name="place" id="place" placeholder="Enter city...">
+                <label for="submit-city"><svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6 .1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg></label>
+                <input type="submit" name="submit" id="submit-city" value="🔍">
+            </form>
+        </div>  
+    
+        <div class="temp-icon">
+            <div class="temperature">
+                <span class="temp"><%= Math.round(weather.main.temp) %>°</span>
+                <span class="weather-type"><%= weather.weather[0].main %></span>
+            </div>
+    
+            <div class="weather-icon">
+                <img src="https://openweathermap.org/img/wn/<%= weather.weather[0].icon%>@2x.png" alt="weather-icon">
+            </div>
+        </div>
+
+
+        <div class="min-max">
+            <span class="max-temp">MAX <%= 
+                (weather.main.temp_max) %>°</span>
+            <span class="min-temp">MIN <%= (weather.main.temp_min) %>°</span>
+        </div>
+
+        <div class="city-name">
+            <span class="yourCity"><%= weather.name %></span>
+            <span class="yourCountry"><%= countryName %></span>
+        </div>
+    </div>
+
+
+    <div class="sunset">
+        <img class="sunset-img" src="images/sunset.png" alt="sunset">
+        <span><%= sunsetTime[0] %>:<%= sunsetTime[1] %></span>
+    </div>
+    
+
+    <div class="more-info">
+        <div class="more-weather">
+            <div class="wind">
+                <span>Wind</span>
+                <span>
+                    <svg  class="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
+                    <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+                  </svg>
+                </span>
+                <span><%= weather.wind.speed %> m/s</span>
+            </div>
+        
+            <div class="pressure">
+                <span>Pressure</span>
+                <span>
+                    <img class="icon" src="images/thermometer.png" alt="pressureicon">
+                </span>
+                <span><%= weather.main.pressure %> hPa</span>
+            </div>
+        
+            <div class="humidity">
+                <span>Humidity</span>
+                <span>
+                    <img src="images/humidity.png" alt="humidity" class="icon">  
+                </span>
+                <span><%= weather.main.humidity %> %</span>
+            </div>
+        
+            <div class="visibility">
+                <span>Visibility</span>
+                <span>
+                    <img src="images/visibility.png" alt="visibility" class="icon">
+                </span>
+                <span><%= weather.visibility/1000 %> Km</span>
+            </div>
+        </div>
+    </div>
+</div>
+    <% } else{%>
+        <div class="weather-display" >
+            <div class="search" style="align-self: flex-start;">
+                <form action="/city" method="post">
+                    <input type="text" name="place" id="place" placeholder="<%= error.message %>">
+                    <label for="submit-city"><svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6 .1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg></label>
+                    <input type="submit" name="submit" id="submit-city" value="🔍">
+                </form>
+            </div>  
+        </div>
+
+    <% } %>
+
+
+
+
+
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25+Charted&display=swap');
+
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: linear-gradient(#35374B,#344955,#50727B);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+.main-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap:1rem;
+    row-gap: 1rem;
+    flex-shrink: 1;
+    resize: none;
+    align-self: center  ;
+    flex: 1;
+}
+header{
+    display: block;
+    text-align: center;
+    padding: 1rem;
+}
+
+footer{
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    /* text-align: center; */
+    /* display: flex;
+    justify-content: center; */
+
+}
+
+.weather-display{
+    color: white;
+    background-color: #78A083;
+    filter: alpha(opacity=50);
+    border-radius: 10%;
+    padding: .2rem;
+    display: flex;
+    /* align-items: center; */
+    /* flex-direction: column; */
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 400px;
+    box-shadow: 0 3px 5px #78A083;
+    flex-shrink: 1;
+    margin: 0;
+}
+
+.search{
+    margin-top: 1rem;
+    width: 90%;
+    position: relative;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    form{
+        padding: .2rem;
+        width: 100%;
+    }
+}
+input[type="text"]{
+    background-color: white;
+    color: #78A083;
+    width: 85%;
+    margin: .1rem auto;
+    height: .5rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 20px;
+    &:focus{
+        outline: none;
+        box-shadow:  1px 2px white;
+    }
+}
+
+.search-icon{
+    width: 1.2rem;
+    height: 1.8rem;
+    fill: #78A083;
+    position:absolute;
+    right: 16px;
+    top:10px;
+    cursor: pointer;
+    opacity: 50%;
+    transform: scale(1.1);
+    &:hover{
+
+        opacity: 90%;
+        transform: scale(1.2);
+        transition: .5s;
+
+    }
+}
+
+input[type="submit"]{
+    display: none;
+    background: none;
+    border: none;
+}
+
+.temperature{
+    margin-top: 2rem ;
+    width: 40%;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    .temp{
+        width: fit-content;
+        font-size: 4rem;
+        margin-right: 3rem;
+    }
+    .weather-type{
+        width: fit-content;
+        font-size: 1.5rem;
+    }
+}
+
+.min-max{
+    height: fit-content;
+    width: 50%;
+    margin: 1rem 4rem 1rem 4rem;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.5;
+    text-align: center;
+    .max-temp{
+        border-right: solid 2px white;
+        margin-right: 1rem;
+        padding-right: 1rem;
+        
+    }
+}
+
+.temp-icon{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+    img{
+        transition: .5s;
+        &:hover{
+            /* transform: scale(1.2); */
+            transform:scale(1.3
+            );
+            transition: .5s;
+        }
+
+    }
+}
+
+.city-name{
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon{
+    width: 2rem;
+    height: 2rem;
+}
+
+.more-info{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.more-weather{
+    align-self: center;
+    margin-top: 1rem;
+    display: flex;
+    height: fit-content;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 500px;
+    align-self: flex-end;
+
+    color: white;
+    background-color: #78A083;
+    filter: alpha(opacity=50);
+    border-radius: 10px;
+    padding: 1rem;
+
+    .pressure, .wind, .humidity, .visibility{
+        display: flex;
+        flex-direction: column;
+        row-gap: .4rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        border-right: solid 2px white;
+        padding-right: 2rem;
+        padding-left: 1rem;
+
+    }
+
+    .visibility{
+        border:none;
+        padding-right: .5rem;
+        
+    }
+
+}
+
+.sunrise-img, .sunset-img{
+    width: 200px;
+    height: 200px;
+}
+
+.sunrise, .sunset{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    padding: 1rem;
+
+    font-family: "Jersey 25 Charted", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: xx-large;
+}
+
